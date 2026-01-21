@@ -1,9 +1,1371 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
- <title>kobeliu123</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 AI新闻日报- 2026年01月21日</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .date-info {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        
+        .stats-bar {
+            background: white;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .stat-item {
+            text-align: center;
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .source-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+        
+        .source-header {
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .source-header h2 {
+            color: #2d3748;
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        .source-badge {
+            background: #667eea;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .article-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .article-item {
+            border-left: 4px solid #e2e8f0;
+            padding: 20px;
+            transition: all 0.3s ease;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .article-item:hover {
+            border-left-color: #667eea;
+            background: #edf2f7;
+            transform: translateX(4px);
+        }
+        
+        .article-title {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+        }
+        
+        .article-title a {
+            color: #2d3748;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .article-title a:hover {
+            color: #667eea;
+            text-decoration: underline;
+        }
+        
+        .article-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 0.9rem;
+            color: #718096;
+            margin-bottom: 10px;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .article-summary {
+            color: #4a5568;
+            line-height: 1.7;
+            margin-top: 10px;
+        }
+        
+        .category-badge {
+            display: inline-block;
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #718096;
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        .badge-domestic {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+        
+        .badge-international {
+            background: #bee3f8;
+            color: #2c5282;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .stats-bar {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat-item {
+                min-width: 100%;
+            }
+        }
+        
+        .time-ago {
+            font-style: italic;
+            color: #a0aec0;
+        }
+    </style>
 </head>
 <body>
- <h1>Welcome to My GitHub Page!</h1>
+    <div class="header">
+        <h1>
+            <span>🤖</span>
+            🤖 AI新闻日报 
+        </h1>
+        <div class="date-info">
+            2026年01月21日  · 数据更新于 2026-01-21 16:20:31
+        </div>
+    </div>
+    
+    <div class="stats-bar">
+        <div class="stat-item">
+            <span class="stat-number">40</span>
+            <span class="stat-label">今日文章</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">4</span>
+            <span class="stat-label">新闻来源</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">0</span>
+            <span class="stat-label">国内新闻</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-number">0</span>
+            <span class="stat-label">国际新闻</span>
+        </div>
+    </div>
+    
+    
+    <div class="source-section">
+        <div class="source-header">
+            <h2>机器之心</h2>
+            <span class="source-badge">7 篇</span>
+        </div>
+        
+        <div class="article-list">
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://www.jiqizhixin.com/articles/2026-01-21-3" target="_blank" rel="noopener">
+                        AI5芯片搞定，马斯克的纯自研超算Dojo 3又回来了
+                        
+                        <span class="category-badge">国内AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-21 13:15:32
+                    </div>
+                    <div class="meta-item">
+                        📰 机器之心
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://www.jiqizhixin.com/articles/2026-01-21" target="_blank" rel="noopener">
+                        AAAI 2026 Oral | 告别注意力与热传导！北大清华提出WaveFormer，首创波动方程建模视觉
+                        
+                        <span class="category-badge">国内AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-21 10:17:29
+                    </div>
+                    <div class="meta-item">
+                        📰 机器之心
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://www.jiqizhixin.com/articles/2026-01-20-13" target="_blank" rel="noopener">
+                        马斯克刚刚真把 𝕏 平台推荐算法给开源了，核心也是Transformer
+                        
+                        <span class="category-badge">国内AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-20 20:44:24
+                    </div>
+                    <div class="meta-item">
+                        📰 机器之心
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://www.jiqizhixin.com/articles/2026-01-20-12" target="_blank" rel="noopener">
+                        击败GPT、Gemini，复旦×创智孵化创业团队「模思智能」，语音模型上新了
+                        
+                        <span class="category-badge">国内AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-20 18:40:00
+                    </div>
+                    <div class="meta-item">
+                        📰 机器之心
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://www.jiqizhixin.com/articles/2026-01-20-11" target="_blank" rel="noopener">
+                        当黄仁勋将存储定义为「AI运行内存」，基础设施该如何实现物种进化？
+                        
+                        <span class="category-badge">国内AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-20 18:35:39
+                    </div>
+                    <div class="meta-item">
+                        📰 机器之心
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://www.jiqizhixin.com/articles/2026-01-20-10" target="_blank" rel="noopener">
+                        从平面几何出发：形式化验证如何驱动MLLM的推理能力跃迁
+                        
+                        <span class="category-badge">国内AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-20 18:27:38
+                    </div>
+                    <div class="meta-item">
+                        📰 机器之心
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://www.jiqizhixin.com/articles/2026-01-20-8" target="_blank" rel="noopener">
+                        EmbodiChain开源，用100%生成式数据自动训练具身智能模型
+                        
+                        <span class="category-badge">国内AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-20 15:27:24
+                    </div>
+                    <div class="meta-item">
+                        📰 机器之心
+                    </div>
+                    
+                </div>
+                
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="source-section">
+        <div class="source-header">
+            <h2>InfoQ AI</h2>
+            <span class="source-badge">11 篇</span>
+        </div>
+        
+        <div class="article-list">
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://www.infoq.com/news/2026/01/cyberark-agents-defenses/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global" target="_blank" rel="noopener">
+                        How CyberArk Protects AI Agents with Instruction Detectors and History-Aware Validation
+                        
+                        <span class="category-badge">国内AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-20 20:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 InfoQ AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    To prevent agents from obeying malicious instructions hidden in external data, all text entering an agent's context must be treated as untrusted,...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://www.infoq.com/news/2026/01/claude-cowork/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global" target="_blank" rel="noopener">
+                        Anthropic announces Claude CoWork
+                        
+                        <span class="category-badge">国内AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-20 15:41:00
+                    </div>
+                    <div class="meta-item">
+                        📰 InfoQ AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    Introducing Claude Cowork: Anthropic's groundbreaking AI agent revolutionizing file management on macOS. With advanced automation capabilities, it...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://www.infoq.com/news/2026/01/meta-pai-genai-data-flows/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global" target="_blank" rel="noopener">
+                        Tracking and Controlling Data Flows at Scale in GenAI: Meta’s Privacy-Aware Infrastructure
+                        
+                        <span class="category-badge">国内AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-20 15:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 InfoQ AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    Meta has revealed how it scales its Privacy-Aware Infrastructure (PAI) to support generative AI development while enforcing privacy across complex...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://www.infoq.com/news/2026/01/mit-recursive-lm/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global" target="_blank" rel="noopener">
+                        MIT's Recursive Language Models Improve Performance on Long-Context Tasks
+                        
+                        <span class="category-badge">国内AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-20 14:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 InfoQ AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    Researchers at MIT's CSAIL published a design for Recursive Language Models (RLM), a technique for improving LLM performance on long-context...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://www.infoq.com/news/2026/01/prisma-7-performance/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global" target="_blank" rel="noopener">
+                        Prisma 7: Rust-Free Architecture and Performance Gains
+                        
+                        <span class="category-badge">国内AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-20 08:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 InfoQ AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    Prisma ORM 7.0 has revolutionized the TypeScript-first ORM landscape with a Rust-free architecture, delivering 3x faster queries, 90% smaller...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://www.infoq.com/news/2026/01/google-agentic-commerce-ucp/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global" target="_blank" rel="noopener">
+                        Google and Retail Leaders Launch Universal Commerce Protocol to Power Next‑Generation AI Shopping
+                        
+                        <span class="category-badge">国内AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-19 17:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 InfoQ AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    Google launched the Universal Commerce Protocol (UCP), an open standard enabling AI-driven shopping agents to complete tasks end-to-end from...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://www.infoq.com/podcasts/ai-driven-development/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global" target="_blank" rel="noopener">
+                        Podcast: [Video Podcast] AI-Driven Development with Olivia McVicker
+                        
+                        <span class="category-badge">国内AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-19 11:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 InfoQ AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    In this episode, Thomas Betts chats with Olivia McVicker, a Senior Cloud Advocate at Microsoft about AI-driven software development. The...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://www.infoq.com/news/2026/01/azure-functions-mcp-support/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global" target="_blank" rel="noopener">
+                        Microsoft Releases Azure Functions Support for Model Context Protocol Servers
+                        
+                        <span class="category-badge">国内AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-19 10:25:00
+                    </div>
+                    <div class="meta-item">
+                        📰 InfoQ AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    Microsoft has launched its Model Context Protocol (MCP) for Azure Functions, ensuring secure, standardized workflows for AI agents. With built-in...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://www.infoq.com/news/2026/01/gitlab-18-8-duo-agent-platform/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global" target="_blank" rel="noopener">
+                        GitLab 18.8 Marks General Availability of the Duo Agent Platform
+                        
+                        <span class="category-badge">国内AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-19 10:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 InfoQ AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    GitLab 18.8 brings a number of new features, including GitLab Duo Planner Agent, GitLab Duo Security Analyst Agent, auto-dismiss irrelevant...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://www.infoq.com/news/2026/01/pinterest-kubernetes-bigdata/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global" target="_blank" rel="noopener">
+                        Pinterest's Moka: How Kubernetes Is Rewriting the Rules of Big Data Processing
+                        
+                        <span class="category-badge">国内AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-19 09:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 InfoQ AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    Digital pinboard provider Pinterest has published an article explaining its blueprint for the future of large-scale data processing with its new...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://www.infoq.com/news/2026/01/cagent-testing/?utm_campaign=infoq_content&utm_source=infoq&utm_medium=feed&utm_term=global" target="_blank" rel="noopener">
+                        Docker’s Cagent Brings Deterministic Testing to AI Agents
+                        
+                        <span class="category-badge">国内AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-19 07:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 InfoQ AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    Docker is positioning its Cagent runtime as a way to bring deterministic testing back to AI agents, addressing a growing problem for teams...
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="source-section">
+        <div class="source-header">
+            <h2>MIT News AI</h2>
+            <span class="source-badge">11 篇</span>
+        </div>
+        
+        <div class="article-list">
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://news.mit.edu/2026/continued-commitment-to-understanding-intelligence-0114" target="_blank" rel="noopener">
+                        At MIT, a continued commitment to understanding intelligence
+                        
+                        <span class="category-badge">国外AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-14 16:50:00
+                    </div>
+                    <div class="meta-item">
+                        📰 MIT News AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    With support from the Siegel Family Endowment, the newly renamed MIT Siegel Family Quest for Intelligence investigates how brains produce...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://news.mit.edu/2026/genai-tool-helps-3d-print-personal-items-sustain-daily-use-0114" target="_blank" rel="noopener">
+                        Generative AI tool helps 3D print personal items that sustain daily use
+                        
+                        <span class="category-badge">国外AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-14 16:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 MIT News AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    “MechStyle” allows users to personalize 3D models, while ensuring they’re physically viable after fabrication, producing unique personal items and...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://news.mit.edu/2026/3-questions-how-ai-could-optimize-power-grid-0109" target="_blank" rel="noopener">
+                        3 Questions: How AI could optimize the power grid
+                        
+                        <span class="category-badge">国外AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-09 00:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 MIT News AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    While the growing energy demands of AI are worrying, some techniques can also help make power grids cleaner and more efficient.
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://news.mit.edu/2026/decoding-arctic-to-predict-winter-weather-0108" target="_blank" rel="noopener">
+                        Decoding the Arctic to predict winter weather
+                        
+                        <span class="category-badge">国外AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-08 16:55:00
+                    </div>
+                    <div class="meta-item">
+                        📰 MIT News AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    With the help of AI, MIT Research Scientist Judah Cohen is reshaping subseasonal forecasting, with the goal of extending the lead time for...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://news.mit.edu/2026/stone-center-inequality-shaping-future-work-launches-0107" target="_blank" rel="noopener">
+                        Stone Center on Inequality and Shaping the Future of Work Launches at MIT
+                        
+                        <span class="category-badge">国外AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-07 15:30:00
+                    </div>
+                    <div class="meta-item">
+                        📰 MIT News AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    Recent launch event for the center featured discussions on pro-worker AI, wealth inequality, and the future of liberal democracy.
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://news.mit.edu/2026/mit-scientists-investigate-memorization-risk-clinical-ai-0105" target="_blank" rel="noopener">
+                        MIT scientists investigate memorization risk in the age of clinical AI
+                        
+                        <span class="category-badge">国外AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-05 16:55:00
+                    </div>
+                    <div class="meta-item">
+                        📰 MIT News AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    New research demonstrates how AI models can be tested to ensure they don’t cause harm by revealing anonymized patient health data.
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://news.mit.edu/2026/using-design-interpret-past-envision-future-c-jacob-payne-0105" target="_blank" rel="noopener">
+                        Using design to interpret the past and envision the future
+                        
+                        <span class="category-badge">国外AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-05 15:25:00
+                    </div>
+                    <div class="meta-item">
+                        📰 MIT News AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    MIT graduate student C Jacob Payne reimagines historic architecture and invents new possibilities at the intersection of AI and design.
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://news.mit.edu/2025/guided-learning-lets-untrainable-neural-networks-realize-their-potential-1218" target="_blank" rel="noopener">
+                        Guided learning lets “untrainable” neural networks realize their potential
+                        
+                        <span class="category-badge">国外AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2025-12-18 16:20:00
+                    </div>
+                    <div class="meta-item">
+                        📰 MIT News AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    CSAIL researchers find even “untrainable” neural nets can learn effectively when guided by another network’s built-in biases using their guidance method.
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://news.mit.edu/2025/new-way-to-increase-large-language-model-capabilities-1217" target="_blank" rel="noopener">
+                        A new way to increase the capabilities of large language models
+                        
+                        <span class="category-badge">国外AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2025-12-17 23:10:00
+                    </div>
+                    <div class="meta-item">
+                        📰 MIT News AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    MIT-IBM Watson AI Lab researchers developed an expressive architecture that provides better state tracking and sequential reasoning in LLMs over...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://news.mit.edu/2025/scientific-sandbox-lets-researchers-explore-evolution-vision-systems-1217" target="_blank" rel="noopener">
+                        A “scientific sandbox” lets researchers explore the evolution of vision systems
+                        
+                        <span class="category-badge">国外AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2025-12-17 14:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 MIT News AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    The AI-powered tool could inform the design of better sensors and cameras for robots or autonomous vehicles.
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://news.mit.edu/2025/robot-makes-chair-1216" target="_blank" rel="noopener">
+                        “Robot, make me a chair”
+                        
+                        <span class="category-badge">国外AI</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2025-12-16 00:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 MIT News AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    An AI-driven system lets users design and build simple, multicomponent objects by describing them with words.
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    <div class="source-section">
+        <div class="source-header">
+            <h2>ArXiv AI</h2>
+            <span class="source-badge">11 篇</span>
+        </div>
+        
+        <div class="article-list">
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://arxiv.org/abs/2601.11559" target="_blank" rel="noopener">
+                        MIMIC-RD: Can LLMs differentially diagnose rare diseases in real-world clinical settings?
+                        
+                        <span class="category-badge">学术论文</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-21 00:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 ArXiv AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    arXiv:2601.11559v1 Announce Type: new Abstract: Despite rare diseases affecting 1 in 10 Americans, their differential diagnosis remains...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://arxiv.org/abs/2601.11625" target="_blank" rel="noopener">
+                        Reasoning Stabilization Point: A Training-Time Signal for Stable Evidence and Shortcut Reliance
+                        
+                        <span class="category-badge">学术论文</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-21 00:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 ArXiv AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    arXiv:2601.11625v1 Announce Type: new Abstract: Fine-tuning pretrained language models can improve task performance while subtly altering the...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://arxiv.org/abs/2601.11781" target="_blank" rel="noopener">
+                        Risk-Aware Human-in-the-Loop Framework with Adaptive Intrusion Response for Autonomous Vehicles
+                        
+                        <span class="category-badge">学术论文</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-21 00:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 ArXiv AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    arXiv:2601.11781v1 Announce Type: new Abstract: Autonomous vehicles must remain safe and effective when encountering rare long-tailed scenarios or...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://arxiv.org/abs/2601.11792" target="_blank" rel="noopener">
+                        A self-evolving multi-role collaborative framework with fine-grained difficulty guidance for innovative mathematical pro
+                        
+                        <span class="category-badge">学术论文</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-21 00:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 ArXiv AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    arXiv:2601.11792v1 Announce Type: new Abstract: Mathematical problem generation (MPG) is a significant research direction in the field of...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://arxiv.org/abs/2601.11816" target="_blank" rel="noopener">
+                        POLARIS: Typed Planning and Governed Execution for Agentic AI in Back-Office Automation
+                        
+                        <span class="category-badge">学术论文</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-21 00:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 ArXiv AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    arXiv:2601.11816v1 Announce Type: new Abstract: Enterprise back office workflows require agentic systems that are auditable, policy-aligned, and...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://arxiv.org/abs/2601.11825" target="_blank" rel="noopener">
+                        AI Co-Scientist for Knowledge Synthesis in Medical Contexts: A Proof of Concept
+                        
+                        <span class="category-badge">学术论文</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-21 00:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 ArXiv AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    arXiv:2601.11825v1 Announce Type: new Abstract: Research waste in biomedical science is driven by redundant studies, incomplete reporting, and the...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://arxiv.org/abs/2601.11840" target="_blank" rel="noopener">
+                        Imandra CodeLogician: Neuro-Symbolic Reasoning for Precise Analysis of Software Logic
+                        
+                        <span class="category-badge">学术论文</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-21 00:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 ArXiv AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    arXiv:2601.11840v1 Announce Type: new Abstract: Large Language Models (LLMs) have shown strong performance on code understanding tasks, yet they...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://arxiv.org/abs/2601.11850" target="_blank" rel="noopener">
+                        Human-AI Collaborative Inductive Thematic Analysis: AI Guided Analysis and Human Interpretive Authority
+                        
+                        <span class="category-badge">学术论文</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-21 00:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 ArXiv AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    arXiv:2601.11850v1 Announce Type: new Abstract: The increasing use of generative artificial intelligence (GenAI) in qualitative research raises...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://arxiv.org/abs/2601.11885" target="_blank" rel="noopener">
+                        MyGram: Modality-aware Graph Transformer with Global Distribution for Multi-modal Entity Alignment
+                        
+                        <span class="category-badge">学术论文</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-21 00:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 ArXiv AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    arXiv:2601.11885v1 Announce Type: new Abstract: Multi-modal entity alignment aims to identify equivalent entities between two multi-modal...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://arxiv.org/abs/2601.11903" target="_blank" rel="noopener">
+                        AEMA: Verifiable Evaluation Framework for Trustworthy and Controlled Agentic LLM Systems
+                        
+                        <span class="category-badge">学术论文</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-21 00:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 ArXiv AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    arXiv:2601.11903v1 Announce Type: new Abstract: Evaluating large language model (LLM)-based multi-agent systems remains a critical challenge, as...
+                </div>
+                
+            </div>
+            
+            <div class="article-item" id="">
+                <div class="article-title">
+                    <a href="https://arxiv.org/abs/2601.11905" target="_blank" rel="noopener">
+                        LIBRA: Language Model Informed Bandit Recourse Algorithm for Personalized Treatment Planning
+                        
+                        <span class="category-badge">学术论文</span>
+                        
+                    </a>
+                </div>
+                
+                <div class="article-meta">
+                    <div class="meta-item">
+                        📅 2026-01-21 00:00:00
+                    </div>
+                    <div class="meta-item">
+                        📰 ArXiv AI
+                    </div>
+                    
+                </div>
+                
+                
+                <div class="article-summary">
+                    arXiv:2601.11905v1 Announce Type: new Abstract: We introduce a unified framework that seamlessly integrates algorithmic recourse, contextual...
+                </div>
+                
+            </div>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer">
+        <p>数据来源：RSS订阅 | 生成时间：2026-01-21 16:20:31 | 使用修复版解析器</p>
+        <p style="margin-top: 10px; font-size: 0.8rem;">
+            使用说明：点击文章标题查看原文 · 本日报自动生成，内容来自公开新闻源
+        </p>
+    </div>
 </body>
 </html>
